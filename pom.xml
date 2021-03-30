@@ -52,6 +52,39 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>2.5.0</version>
+				<dependencies>
+					<!-- https://mvnrepository.com/artifact/xerces/xercesImpl -->
+					<dependency>
+						<groupId>xerces</groupId>
+						<artifactId>xercesImpl</artifactId>
+						<version>2.12.1</version>
+					</dependency>
+
+				</dependencies>
+				<executions>
+					<execution>
+						<id>xjc-pedido-comercial</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<configuration>
+							<!-- The package of your generated sources -->
+							<packageName>br.com.arcasoftware.comercial.pedido</packageName>
+							<clearOutputDir>true</clearOutputDir>
+							<sources>
+								<source>src/main/resources/xsd/pedidoComercialACIL.xsd</source>
+							</sources>
+							<outputDirectory>${project.build.directory}/generated-sources/xjc</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+
+			</plugin>
 		</plugins>
 	</build>
 
